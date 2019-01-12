@@ -15,6 +15,16 @@ namespace StaleFileRemover
             Console.WriteLine("Directory monitoring " + monitor.Path);
 
             Console.ReadKey();
+
+            var provider = new Providers.ConfigurationProvider();
+
+            Console.WriteLine("Initialized config provider.");
+
+            var config = new Abstractions.AppConfiguration();
+
+            Console.WriteLine("Initialized app config abstraction");
+
+            Console.ReadKey();
         }
     }
 }
