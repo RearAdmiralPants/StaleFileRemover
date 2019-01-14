@@ -6,6 +6,8 @@ namespace StaleFileRemover.Providers {
     using System.IO;
 
     public class ConfigurationProvider {
+        private const string APP_CONFIG_FILENAME = "StaleFileRemoverConfig.json";
+
         public string FilePath { get; set; }
 
         public AppConfiguration GetAppConfiguration() {
@@ -24,7 +26,9 @@ namespace StaleFileRemover.Providers {
         }
 
         public void FindConfigFile() {
-
+            var execAssembly = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            var assemblyPath = Path.GetDirectoryName(execAssembly);
+            
         }
     }
 }
