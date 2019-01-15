@@ -25,6 +25,12 @@ namespace StaleFileRemover
             Console.WriteLine("Initialized app config abstraction");
 
             Console.ReadKey();
+
+            var dir = "C:\\src";
+            var filename = "testFile.txt";
+
+            Console.WriteLine(System.IO.Path.Combine(dir, filename));
+            Console.ReadKey();
         }
     }
 }
