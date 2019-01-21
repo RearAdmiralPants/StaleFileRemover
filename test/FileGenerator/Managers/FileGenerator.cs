@@ -50,11 +50,16 @@ namespace FileGenerator.Managers {
             var filename = this.GetFilename();
             var path = Path.Combine(this.TargetPath, filename);
 
+            Console.WriteLine("Generating file: " + path);
+
             using (var stream = new FileStream(path, FileMode.Create)) {
                 var chunk = this.GetFileChunk(16384);
                 var bytes = System.Text.Encoding.UTF8.GetBytes(chunk);
                 var written = 0;
                 while (Convert.ToUInt64(written + bytes.Length) < fileSize) {
+                    var dbgNewSize = Convert.ToUInt64(written + bytes.Length);
+                    Console.WriteLine(dbgNewSize.ToString() + " written out of " + fileSize.ToString());
+                    Console.WriteLine("Writing " + bytes.Length + " ...");
                     stream.Write(bytes, 0, bytes.Length);
                     written += bytes.Length;
                 }
@@ -64,11 +69,14 @@ namespace FileGenerator.Managers {
 
                 stream.Close();
             }
+
+            Console.WriteLine("Wrote file (" + fileSize.ToString() + " bytes)...");
         }
 
         private string GetFileChunk(int size) {
             // Can we do this faster?
-            var result = this.FilePadding.ToString();
+            var paddingChar = Convert.ToChar(this.FilePadding);
+            var result = paddingChar.ToString();
             while (result.Length < size) {
                 result = result + this.FilePadding.ToString();
             }
