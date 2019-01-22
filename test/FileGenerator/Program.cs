@@ -10,7 +10,7 @@
         {
             var fileManager = new FileGenerator();
             fileManager.TargetPath = "C:\\Test\\TestStaleDirectory";
-            fileManager.FilePadding = (byte)'a';
+            fileManager.FilePadding = 'a';
             fileManager.GenerationPeriodSeconds = 5;
             fileManager.MinimumFileSize = 25000;
             fileManager.MaximumFileSize = 65535;

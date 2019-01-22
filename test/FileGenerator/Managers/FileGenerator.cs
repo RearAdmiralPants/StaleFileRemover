@@ -16,7 +16,7 @@ namespace FileGenerator.Managers {
 
         public ulong MaximumFileSize { get; set; }
 
-        public byte FilePadding { get; set; } = (byte)'_';
+        public char FilePadding { get; set; } = '_';
 
         public void Start() {
             if (!SanityCheck()) {
